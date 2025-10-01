@@ -166,9 +166,6 @@
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="yHfCZk7ZjOpYaiB_SqOW-1" value="Library DB" style="shape=datastore;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="760" y="-80" width="100" height="120" as="geometry" />
-        </mxCell>
         <mxCell id="crr3wmo3wSMpuPmv0KFF-1" value="Borrow" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="400" y="-260" width="180" height="180" as="geometry" />
         </mxCell>
@@ -439,8 +436,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="DYKtQ5MgEj7E-c7yhG__-1" value="&lt;div&gt;&lt;font&gt;Cardinalities&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;User - book = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;book - borrow = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;book - reservation = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;book - penalty = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;align=left;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="600" y="540" width="180" height="180" as="geometry" />
+        <mxCell id="DYKtQ5MgEj7E-c7yhG__-1" value="&lt;div&gt;&lt;font&gt;Relationship and aardinalities&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;User - book = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;book - borrow = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;book - reservation = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;book - penalty = one to many&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="720" y="410" width="180" height="180" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
