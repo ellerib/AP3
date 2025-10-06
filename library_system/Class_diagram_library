@@ -68,7 +68,7 @@
           <mxGeometry x="810" y="80" width="102" height="32" as="geometry" />
         </mxCell>
         <mxCell id="HR4TP-Tgx4zZE3oC_6Q_-26" value="Borrow" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="690" y="850" width="160" height="176" as="geometry" />
+          <mxGeometry x="320" y="780" width="160" height="176" as="geometry" />
         </mxCell>
         <mxCell id="HR4TP-Tgx4zZE3oC_6Q_-27" value="borrower_name" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="HR4TP-Tgx4zZE3oC_6Q_-26" vertex="1">
           <mxGeometry y="26" width="160" height="30" as="geometry" />
@@ -86,7 +86,7 @@
           <mxGeometry y="146" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HR4TP-Tgx4zZE3oC_6Q_-32" value="Reservation" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="880" y="850" width="160" height="176" as="geometry" />
+          <mxGeometry x="501" y="780" width="160" height="176" as="geometry" />
         </mxCell>
         <mxCell id="HR4TP-Tgx4zZE3oC_6Q_-33" value="reservation_name" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="HR4TP-Tgx4zZE3oC_6Q_-32" vertex="1">
           <mxGeometry y="26" width="160" height="30" as="geometry" />
@@ -131,7 +131,7 @@
           <mxGeometry y="86" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HR4TP-Tgx4zZE3oC_6Q_-49" value="Penalties" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="1060" y="850" width="160" height="146" as="geometry" />
+          <mxGeometry x="690" y="780" width="160" height="146" as="geometry" />
         </mxCell>
         <mxCell id="HR4TP-Tgx4zZE3oC_6Q_-50" value="book_title" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="HR4TP-Tgx4zZE3oC_6Q_-49" vertex="1">
           <mxGeometry y="26" width="160" height="30" as="geometry" />
@@ -146,7 +146,7 @@
           <mxGeometry y="116" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="00lJrmQ4jaFIRpqYdcb1-5" value="Book" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="840" y="630" width="160" height="176" as="geometry" />
+          <mxGeometry x="1080" y="616" width="160" height="176" as="geometry" />
         </mxCell>
         <mxCell id="00lJrmQ4jaFIRpqYdcb1-6" value="book_id" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="00lJrmQ4jaFIRpqYdcb1-5">
           <mxGeometry y="26" width="160" height="30" as="geometry" />
