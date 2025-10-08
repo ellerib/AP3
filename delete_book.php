@@ -55,21 +55,12 @@
             $deletebook = $conn->prepare("DELETE FROM books WHERE isbn = ? AND author = ?");
             $deletebook->bind_param("ss", $deleteisbn, $deleteauthor);
 
-<<<<<<< HEAD
             if($deletebook->execute()){
                 echo "<script> window.alert('Book successfully deleted') </script>";
             }else{
                 echo "<script> window.alert('Book unsuccessfully deleted')</script>";
             }
             $deletebook->close();            
-=======
-                if($deletebook->execute()){
-                    echo "<script> window.alert('Book successfully deleted') </script>";
-                }else{
-                    echo "<script> window.alert('Book unsuccessfully deleted')</script>";
-                }
-                $deletebook->close();            
->>>>>>> b1a1a14 (Adding and testing)
 
         }else{
             echo "No book found with the name: '$deleteauthor'";

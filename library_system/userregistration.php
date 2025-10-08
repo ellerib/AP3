@@ -11,7 +11,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /*height: 1100px;*/
+            /* height: 1000px; */
         }
 
         header{
@@ -40,8 +40,45 @@
             padding: 12px;
             border-radius: 9px;
             border: none;
+            outline: none;
+            background-color: white;
+            font-size: 15px;
+            /* font-weight: bold; */
+        }
+
+        form label, form p{
+            align-self: flex-start;
+            margin: 0;
+            font-size: 15px;
+            color: white;
+        }
+
+        button{
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            background-color: #1c3726;
+            /* cursor: pointer; */
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        /* FORM CONTAINER */
+        .formcontent{
+            background-color: #326b45;
+            padding: 40px 48px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 250px;
+            margin-top: 200px;
 
         }
+
 
     </style>
     <meta charset="UTF-8">
@@ -59,7 +96,7 @@
                 <input type="password" name="password" placeholder="Password">
                 
                 <label for="" id="roleselection"> Choose Role: </label>
-                <select name="roletype" id="">
+                <select name="roletype">
                     <option value="student"> Student </option>
                     <option value="teacher"> Teacher </option>
                     <option value="librarian"> Librarian </option>
