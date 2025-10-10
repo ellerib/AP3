@@ -96,7 +96,7 @@
                 <input type="password" name="password" placeholder="Password">
                 
                 <label for="" id="roleselection"> Choose Role: </label>
-                <select name="roletype">
+                <select name="role">
                     <option value="student"> Student </option>
                     <option value="teacher"> Teacher </option>
                     <option value="librarian"> Librarian </option>
@@ -107,6 +107,57 @@
 
             </form>
         </div>
+
+        <?php
+
+            require_once 'user.php';
+
+            $host = "localhost";
+            $username ="root";
+            $password = "";
+            $db = "librarysystem";
+
+            $conn = new mysqli($host, $username, $password, $db);
+
+            if($conn->connect_error){
+                die("Connect error" .$conn->connect_error);
+            }
+
+
+            if($_SERVER["REQUEST_METHOD"]=='POST'){
+                $lastname = $_POST['lastname'];
+                $firstname = $_POST['firstname'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $role = $_POST['role'];
+
+                $user = new User($lastname, $firstname, 
+                $email, $password, $role);
+                
+                $lastname = $user->get_lastname(); 
+                $firstname = $user->get_firstname(); 
+                $email = $user->get_email();
+                $password = $user->get_password() ;
+                $role = $user->get_role();
+               
+                $sql = "INSERT INTO users(lastname, firstname, email, password, role) VALUES(?, ?, ?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+
+                $stmt->bind_param("sssss", $lastname, $firstname, $email, $password, $role);
+
+                if($stmt->execute()){
+                    echo "<script> alert('User registered')</script>";
+                }else{
+                    echo "<script> alert('User unregistered')</script> ";
+                }
+
+                $conn->close();
+
+
+            }
+
+
+        ?>
 
     
 </body>

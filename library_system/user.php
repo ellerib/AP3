@@ -1,32 +1,59 @@
 <?php
     class User{
-        private $username;
-        private $password;
-        private $role;
+        public $lastname;
+        public $firstname;
+        public $email;
+        public $password;
+        public $role;
 
-        // METHOD FOR SETTER
-        private function set_username($username){
-            $this->username = $username;
+
+        public function __construct($lastname, $firstname, $email, $password, $role) {
+            $this->lastname = $lastname;
+            $this->firstname = $firstname;
+            $this->email = $email;
+            $this->password = $password;
+            $this->role = $role;
         }
 
-        private function set_password($password){
+        // METHOD FOR SETTER
+        public function set_lastname($lastname){
+            $this->lastname = $lastname;
+        }
+
+        public function set_firstname($firstname){
+            $this->firstname = $firstname;
+        }
+        public function set_email($email){
+            $this->email = $email;
+        }
+
+        public function set_password($password){
             $this->password = $password;
         }
 
-        private function set_role($role){
+        public function set_role($role){
             $this->role = $role;
         }
 
             // METHOD FOR GETTER
-        private function get_username(){
-            return $this->username;
+        
+        public function get_lastname(){
+            return $this->lastname;
         }
 
-        private function get_password(){
+        public function get_firstname(){
+            return $this->firstname;
+        }
+
+        public function get_email(){
+            return $this->email;
+        }
+
+        public function get_password(){
             return $this->password;
         }
 
-        private function get_role(){
+        public function get_role(){
             return $this->role;
         }
     }    

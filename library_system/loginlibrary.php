@@ -148,7 +148,20 @@
 
     <?php
 
+
+        $host = "localhost";
+        $username ="root";
+        $password = "";
+        $db = "librarysystem";
+
+        $conn = new mysqli($host, $username, $password, $db);
+
+        if($conn->connect_error){
+            die("Connect error" .$conn->connect_error);
+        }
+
         
+
 
     ?>
     <!-- Header -->
@@ -156,7 +169,7 @@
     <!-- Login Box -->
     <div class="loginform">
         <form action="" method="post">  
-        <input type="text" name="username" placeholder="Email" required>
+        <input type="text" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
 
         <label for="" id="logintext"> Login As </label>
@@ -177,6 +190,8 @@
 
     <!-- Footer Bar -->
     <div class="footer"></div>
+    
+
 
 </body>
 </html>
