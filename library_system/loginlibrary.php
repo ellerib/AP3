@@ -147,8 +147,7 @@
 <body>
 
     <?php
-
-
+       
         $host = "localhost";
         $username ="root";
         $password = "";
@@ -159,6 +158,34 @@
         if($conn->connect_error){
             die("Connect error" .$conn->connect_error);
         }
+
+        if(isset($_POST["login"])){
+            // GETTING THE DATA 
+            $login_email = trim($_POST['email']);
+            $login_password = $_POST['password'];
+            $login_role = $_POST['roletype'];
+
+            
+        }
+
+        // if($_SERVER["REQUEST_METHOD"]=='POST'){
+        //     $login_email = trim($_POST['email']);
+        //     $login_password = $_POST['password'];
+        //     $login_role = $_POST['roletype'];
+
+        //     $user = new User("","",$login_email,$login_password, $login_role);
+
+        //     $login_email = $user->get_email();
+        //     $login_role = $user->get_role();
+
+        //     $sql = "SELECT email, password FROM users WHERE email=?";
+        //     $stmt = $conn->prepare($sql);
+        //     $stmt->bind_param("s",$login_email);
+        //     $stmt->execute();
+
+
+
+        // }
 
         
 
@@ -182,7 +209,7 @@
 
         <a href="forgotpassword.php">Forgot Password?</a>
 
-        <button type="submit">Log-In</button>
+        <button type="submit" name="login">Log-In</button>
 
         <a href="userregistration.php" class="create-btn">Create New User</a>
         </form>

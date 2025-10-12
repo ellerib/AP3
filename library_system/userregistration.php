@@ -134,16 +134,9 @@
                 $user = new User($lastname, $firstname, 
                 $email, $password, $role);
                 
-                $lastname = $user->get_lastname(); 
-                $firstname = $user->get_firstname(); 
-                $email = $user->get_email();
-                $password = $user->get_password() ;
-                $role = $user->get_role();
+    
                
-                $sql = "INSERT INTO users(lastname, firstname, email, password, role) VALUES(?, ?, ?, ?, ?)";
-                $stmt = $conn->prepare($sql);
-
-                $stmt->bind_param("sssss", $lastname, $firstname, $email, $password, $role);
+                $
 
                 if($stmt->execute()){
                     echo "<script> alert('User registered')</script>";
