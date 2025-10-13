@@ -1,3 +1,75 @@
+<?php
+       
+        require_once 'user.php';
+
+        $host = "localhost";
+        $username ="root";
+        $password = "";
+        $db = "librarysystem";
+
+        $conn = new mysqli($host, $username, $password, $db);
+
+        if($conn->connect_error){
+            die("Connect error" .$conn->connect_error);
+        }
+
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $login_email = $_POST['email'];
+            $login_password = $_POST['password'];
+            $login_role = $_POST['roletype'];
+
+
+            $login_user = new User("", "", $login_email,
+             $login_password, $login_role);
+
+            $message = $login_user->login($conn);
+
+            
+
+            // if(isset($message)){
+            //     echo "<script> alert('Login successful') </script>";
+            // }else{
+            //     echo "<script> alert('Login unsuccessful')</script>";
+            // }
+
+            
+        }
+
+       
+
+
+        // if(isset($_POST["login"])){
+        //     // GETTING THE DATA 
+        //     $login_email = trim($_POST['email']);
+        //     $login_password = $_POST['password'];
+        //     $login_role = $_POST['roletype'];
+
+        // }
+
+        // if($_SERVER["REQUEST_METHOD"]=='POST'){
+        //     $login_email = trim($_POST['email']);
+        //     $login_password = $_POST['password'];
+        //     $login_role = $_POST['roletype'];
+
+        //     $user = new User("","",$login_email,$login_password, $login_role);
+
+        //     $login_email = $user->get_email();
+        //     $login_role = $user->get_role();
+
+        //     $sql = "SELECT email, password FROM users WHERE email=?";
+        //     $stmt = $conn->prepare($sql);
+        //     $stmt->bind_param("s",$login_email);
+        //     $stmt->execute();
+
+
+
+        // }
+
+        
+
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">   
 <meta charset="UTF-8">
@@ -146,52 +218,7 @@
 </head>
 <body>
 
-    <?php
-       
-        $host = "localhost";
-        $username ="root";
-        $password = "";
-        $db = "librarysystem";
-
-        $conn = new mysqli($host, $username, $password, $db);
-
-        if($conn->connect_error){
-            die("Connect error" .$conn->connect_error);
-        }
-
-        
-
-        // if(isset($_POST["login"])){
-        //     // GETTING THE DATA 
-        //     $login_email = trim($_POST['email']);
-        //     $login_password = $_POST['password'];
-        //     $login_role = $_POST['roletype'];
-
-        // }
-
-        // if($_SERVER["REQUEST_METHOD"]=='POST'){
-        //     $login_email = trim($_POST['email']);
-        //     $login_password = $_POST['password'];
-        //     $login_role = $_POST['roletype'];
-
-        //     $user = new User("","",$login_email,$login_password, $login_role);
-
-        //     $login_email = $user->get_email();
-        //     $login_role = $user->get_role();
-
-        //     $sql = "SELECT email, password FROM users WHERE email=?";
-        //     $stmt = $conn->prepare($sql);
-        //     $stmt->bind_param("s",$login_email);
-        //     $stmt->execute();
-
-
-
-        // }
-
-        
-
-
-    ?>
+    
     <!-- Header -->
     <header>Library System</header>
     <!-- Login Box -->

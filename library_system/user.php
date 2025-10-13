@@ -25,45 +25,49 @@
         }
 
         public function login($conn){
-            $sql = "SELECT email, password, role FROM users
-            WHERE email=?";
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                session_unset();
+                session_destroy();
+            }
+            session_start();
+
+
+            $sql = "SELECT user_id, email, password, role FROM users WHERE email=?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $this->email);
             $stmt->execute();
             $result = $stmt->get_result();
 
-            if($result->num_rows===1){
-                $user = $result->fetch_associate();
+            if ($result->num_rows === 1) {
+                $user = $result->fetch_assoc();
 
-                if(password_verify($this->password, $user['password'])){
+                if (!password_verify($this->password, $user['password'])) {
+                     return "Invalid password";
+                } 
+                
                     session_start();
                     $_SESSION['user_id'] = $user['user_id'];
-                    $_SESSION['role_id'] = $user['role'];
+                    $_SESSION['role'] = $user['role'];
 
-                    switch($user['role']){
+                    switch ($user['role']) {
                         case 'student':
-                            header("studentpage.php");
-                            break;
+                            header("Location: studentpage.php");
+                            exit();
                         case 'teacher':
-                            header("teacherpage.php");
-                            break;
+                            header("Location: teacherpage.php");
+                            exit();
                         case 'librarian':
-                            header("librarianpage.php");
-                            break;
+                            header("Location: librarianpage.php");
+                            exit();
                         default:
-                            header("staffpage.php");
-                        break;
+                            header("Location: staffpage.php");
+                            exit();  
                     }
-
-
-                }else{
-                    return "Invalid password";
-                }
-
-            }else{
+            } else {
                 return "User not found";
             }
         }
+
 
         // public function emptyemail(){
         //     $result;
