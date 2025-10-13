@@ -131,19 +131,20 @@
                 $password = $_POST['password'];
                 $role = $_POST['role'];
 
+                // CLASS FROM THE USER.PHP
                 $user = new User($lastname, $firstname, 
                 $email, $password, $role);
                 
-    
-               
-                $
+                $message = $user->register($conn, $lastname, $firstname, 
+                $email, $password, $role);
 
-                if($stmt->execute()){
+                // CHECK IF THE MESSAGE HAS A VALUE AND IT IS BEING SAVED TO DB
+                if(isset($massage)){
                     echo "<script> alert('User registered')</script>";
                 }else{
-                    echo "<script> alert('User unregistered')</script> ";
+                    echo "<script> alert('User unregistered') </script>";
                 }
-
+               
                 $conn->close();
 
 

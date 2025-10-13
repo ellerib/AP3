@@ -159,14 +159,15 @@
             die("Connect error" .$conn->connect_error);
         }
 
-        if(isset($_POST["login"])){
-            // GETTING THE DATA 
-            $login_email = trim($_POST['email']);
-            $login_password = $_POST['password'];
-            $login_role = $_POST['roletype'];
+        
 
-            
-        }
+        // if(isset($_POST["login"])){
+        //     // GETTING THE DATA 
+        //     $login_email = trim($_POST['email']);
+        //     $login_password = $_POST['password'];
+        //     $login_role = $_POST['roletype'];
+
+        // }
 
         // if($_SERVER["REQUEST_METHOD"]=='POST'){
         //     $login_email = trim($_POST['email']);

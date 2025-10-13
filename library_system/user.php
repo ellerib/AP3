@@ -20,12 +20,7 @@
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("sssss", $this->lastname, $this->firstname,
             $this->email,$this->password, $this->role);
-
-            if($stmt->execute()){
-                return "User registered";
-            }else{
-                return "User unsuccessfully registered";
-            }
+            $stmt->execute();
 
         }
 
@@ -123,10 +118,6 @@
         // public function get_role(){
         //     return $this->role;
         // }
-
-
-
-
 
     }    
 
