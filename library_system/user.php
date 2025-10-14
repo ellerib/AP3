@@ -15,58 +15,68 @@
             $this->role = $role;
         }
 
-        public function register($conn,$lastname, $firstname, $email, $password, $role){
-            $sql = "INSERT INTO users(lastname, firstname, email, password, role) VALUES(?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss", $this->lastname, $this->firstname,
-            $this->email,$this->password, $this->role);
-            $stmt->execute();
+        public function register($conn) {
+    // Hash password once before inserting
+    $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
-        }
+    // Prepare insert query
+    $sql = "INSERT INTO users (lastname, firstname, email, password, role)
+            VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", 
+        $this->lastname, 
+        $this->firstname, 
+        $this->email, 
+        $hashedPassword, 
+        $this->role
+    );
 
-        public function login($conn){
-            if (session_status() === PHP_SESSION_ACTIVE) {
-                session_unset();
-                session_destroy();
-            }
+    if ($stmt->execute()) {
+        echo "<script>alert('User registered successfully!');</script>";
+    } else {
+        echo "<script>alert('Error: could not register user.');</script>";
+    }
+
+    $stmt->close();
+}
+
+
+       public function login($conn) {
+    $sql = "SELECT user_id, email, password, role FROM users WHERE email=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $this->email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        // echo "Entered password: " . $this->password . "<br>";
+        // echo "Hashed password from DB: " . $row['password'] . "<br>";
+
+        if (password_verify($this->password, $row['password'])) {
+           
             session_start();
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['role'] = $row['role'];
 
-
-            $sql = "SELECT user_id, email, password, role FROM users WHERE email=?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $this->email);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            if ($result->num_rows === 1) {
-                $user = $result->fetch_assoc();
-
-                if (!password_verify($this->password, $user['password'])) {
-                     return "Invalid password";
-                } 
-                
-                    session_start();
-                    $_SESSION['user_id'] = $user['user_id'];
-                    $_SESSION['role'] = $user['role'];
-
-                    switch ($user['role']) {
-                        case 'student':
-                            header("Location: studentpage.php");
-                            exit();
-                        case 'teacher':
-                            header("Location: teacherpage.php");
-                            exit();
-                        case 'librarian':
-                            header("Location: librarianpage.php");
-                            exit();
-                        default:
-                            header("Location: staffpage.php");
-                            exit();  
-                    }
-            } else {
-                return "User not found";
+            if ($row['role'] == 'student') {
+                header("Location: studentpage.php");
+            } elseif ($row['role'] == 'teacher') {
+                header("Location: teacherpage.php");
+            } elseif ($row['role'] == 'librarian') {
+                header("Location: librarianpage.php");
+            } elseif ($row['role'] == 'staff') {
+                header("Location: staffpage.php");
             }
+            exit();
+        } else {
+            echo "<script>alert('Invalid password');</script>";
         }
+    } else {
+        echo "<script>alert('User not found');</script>";
+    }
+}
 
 
         // public function emptyemail(){

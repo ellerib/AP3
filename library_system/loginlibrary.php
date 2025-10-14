@@ -1,4 +1,4 @@
-<?php
+ <?php
        
         require_once 'user.php';
 
@@ -16,13 +16,11 @@
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $login_email = $_POST['email'];
             $login_password = $_POST['password'];
-            $login_role = $_POST['roletype'];
-
 
             $login_user = new User("", "", $login_email,
-             $login_password, $login_role);
+             $login_password, "");
 
-            $message = $login_user->login($conn);
+            $login_user->login($conn);
 
             
 
@@ -34,37 +32,6 @@
 
             
         }
-
-       
-
-
-        // if(isset($_POST["login"])){
-        //     // GETTING THE DATA 
-        //     $login_email = trim($_POST['email']);
-        //     $login_password = $_POST['password'];
-        //     $login_role = $_POST['roletype'];
-
-        // }
-
-        // if($_SERVER["REQUEST_METHOD"]=='POST'){
-        //     $login_email = trim($_POST['email']);
-        //     $login_password = $_POST['password'];
-        //     $login_role = $_POST['roletype'];
-
-        //     $user = new User("","",$login_email,$login_password, $login_role);
-
-        //     $login_email = $user->get_email();
-        //     $login_role = $user->get_role();
-
-        //     $sql = "SELECT email, password FROM users WHERE email=?";
-        //     $stmt = $conn->prepare($sql);
-        //     $stmt->bind_param("s",$login_email);
-        //     $stmt->execute();
-
-
-
-        // }
-
         
 
 
@@ -227,14 +194,6 @@
         <input type="text" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
 
-        <label for="" id="logintext"> Login As </label>
-        <select name="roletype"> 
-            <option value="student">Student</option>
-            <option value="teacher">Teacher</option>
-            <option value="librarian">Librarian</option>
-            <option value="staff">Staff</option>
-        </select>
-
         <a href="forgotpassword.php">Forgot Password?</a>
 
         <button type="submit" name="login">Log-In</button>
@@ -246,6 +205,8 @@
     <!-- Footer Bar -->
     <div class="footer"></div>
     
+    
+   
 
 
 </body>
