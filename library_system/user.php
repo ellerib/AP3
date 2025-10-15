@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
     class User{
         public $lastname;
         public $firstname;
@@ -135,4 +135,4 @@
 
     }    
 
-?>
+?> -->
