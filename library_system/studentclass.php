@@ -1,10 +1,11 @@
 <?php
 
-    class Student{
-        private $firstname, $lastname, $book_borrowed, 
-        $borrowed_date, $penalties, $borrow_limit;
+    class Student extends User{
+        public $firstname, $lastname, $book_borrowed, 
+        $borrowed_date, $penalties;
+        public $borrow_limit = 3;
 
-        private function __construct($firstname, $lastname, $book_borrowed, 
+        public function __construct($firstname, $lastname, $book_borrowed, 
         $borrowed_date, $penalties, $borrow_limit){
             $this->firstname = $firstname;
             $this->lastname = $lastname;
@@ -13,6 +14,10 @@
             $this->penalties = $penalties;
             $this->borrow_limit = $borrow_limit;
         }
+
+        
+         
+
 
          
         
