@@ -1,31 +1,19 @@
 <?php
+class Database {
+    private $host = "localhost";
+    private $db = "librarysystem";
+    private $username = "root";
+    private $password = "";
+    public $conn;
 
-    class Database{
-        private $host = "localhost";
-        private $db = "librarysystem";
-        private $username =  "root";
-        private $password = "";
+    public function getconnection() {
+        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db);
 
-        public $conn;
-
-        public function getconnection(){
-            $this->conn = null;
-
-            try{
-                $this->conn = new PDO(
-                    "mysql.host= ". $this->host . "dbname" . $this->db,
-                    $this->username, $this->password
-                );
-                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-
-            }catch(PDOException $exception){
-                echo "Database error: ".$exception->getMessage();
-            }
-                
+        if($this->conn->connect_error){
+            die ("Connection failed". $this->conn->connect_error);
         }
+        return $this->conn;
 
     }
-    
-
+}
 ?>

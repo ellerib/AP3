@@ -16,67 +16,67 @@
         }
 
         public function register($conn) {
-    // Hash password once before inserting
-    $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+            // Hash password once before inserting
+            $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
-    // Prepare insert query
-    $sql = "INSERT INTO users (lastname, firstname, email, password, role)
-            VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", 
-        $this->lastname, 
-        $this->firstname, 
-        $this->email, 
-        $hashedPassword, 
-        $this->role
-    );
+            // Prepare insert query
+            $sql = "INSERT INTO users (lastname, firstname, email, password, role)
+                    VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssss", 
+                $this->lastname, 
+                $this->firstname, 
+                $this->email, 
+                $hashedPassword, 
+                $this->role
+            );
 
-    if ($stmt->execute()) {
-        echo "<script>alert('User registered successfully!');</script>";
-    } else {
-        echo "<script>alert('Error: could not register user.');</script>";
-    }
-
-    $stmt->close();
-}
-
-
-       public function login($conn) {
-    $sql = "SELECT user_id, email, password, role FROM users WHERE email=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $this->email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-
-        // echo "Entered password: " . $this->password . "<br>";
-        // echo "Hashed password from DB: " . $row['password'] . "<br>";
-
-        if (password_verify($this->password, $row['password'])) {
-           
-            session_start();
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['role'] = $row['role'];
-
-            if ($row['role'] == 'student') {
-                header("Location: studentpage.php");
-            } elseif ($row['role'] == 'teacher') {
-                header("Location: teacherpage.php");
-            } elseif ($row['role'] == 'librarian') {
-                header("Location: librarianpage.php");
-            } elseif ($row['role'] == 'staff') {
-                header("Location: staffpage.php");
+            if ($stmt->execute()) {
+                echo "<script>alert('User registered successfully!');</script>";
+            } else {
+                echo "<script>alert('Error: could not register user.');</script>";
             }
-            exit();
-        } else {
-            echo "<script>alert('Invalid password');</script>";
+
+            $stmt->close();
         }
-    } else {
-        echo "<script>alert('User not found');</script>";
-    }
-}
+
+
+        public function login($conn) {
+            $sql = "SELECT user_id, email, password, role FROM users WHERE email=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $this->email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+
+                // echo "Entered password: " . $this->password . "<br>";
+                // echo "Hashed password from DB: " . $row['password'] . "<br>";
+
+                if (password_verify($this->password, $row['password'])) {
+                
+                    session_start();
+                    $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['role'] = $row['role'];
+
+                    if ($row['role'] == 'student') {
+                        header("Location: studentpage.php");
+                    } elseif ($row['role'] == 'teacher') {
+                        header("Location: teacherpage.php");
+                    } elseif ($row['role'] == 'librarian') {
+                        header("Location: librarianpage.php");
+                    } elseif ($row['role'] == 'staff') {
+                        header("Location: staffpage.php");
+                    }
+                    exit();
+                } else {
+                    echo "<script>alert('Invalid password');</script>";
+                }
+            } else {
+                echo "<script>alert('User not found');</script>";
+            }
+        }
 
 
         // public function emptyemail(){
