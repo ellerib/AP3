@@ -1,19 +1,24 @@
 <?php
     class borrow extends User{
 
-        public $borrow_date, $return_date, $book_id;
+        public $borrow_date, $return_date;
+        private $user_id, $book_id;
 
 
-        public function __construct($borrow_date, $return_date, $book_id){
+        public function __construct($borrow_date, $return_date){
             $this->borrow_date = $borrow_date;
             $this->return_date = $return_date;
-            $this->book_id = $book_id;
 
+        }
+
+        public function setuserandbookinfo($book_id, $user_id){
+            $this->book_id = $book_id;
+            $this->user_id = $user_id;
         }
 
         public function borrow_book($conn){
 
-            $sql = "INSERT INTO books(borrow_date, return_date, book_id) VALUES(?, ?, ?)";
+            $sql = "INSERT INTO bo(borrow_date, return_date, book_id) VALUES(?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssi", $this->borrow_date, $this->return_date, $this->book_id);
             
@@ -25,11 +30,6 @@
 
         }
 
-        public function borrow_limit($conn){
-
-            if()
-
-        }
 
 
     }

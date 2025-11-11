@@ -108,43 +108,5 @@
             </form>
         </div>
 
-        <?php
-
-            require_once 'user.php';
-
-            $host = "localhost";
-            $username ="root";
-            $password = "";
-            $db = "librarysystem";
-
-            $conn = new mysqli($host, $username, $password, $db);
-
-            if($conn->connect_error){
-                die("Connect error" .$conn->connect_error);
-            }
-
-
-            if($_SERVER["REQUEST_METHOD"]=='POST'){
-                $lastname = $_POST['lastname'];
-                $firstname = $_POST['firstname'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $role = $_POST['role'];
-
-                // CLASS FROM THE USER.PHP
-                $user = new User($lastname, $firstname, 
-                $email, $password, $role);
-
-                $user->register($conn);
-
-                $conn->close();
-
-
-            }
-
-
-        ?>
-
-    
 </body>
 </html>

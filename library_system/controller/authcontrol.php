@@ -21,6 +21,8 @@
         }
 
         public function register(){
+            require_once "/view/register.php";
+
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 $lastname = $_POST['lastname'];
                 $firstname = $_POST['firstname'];
@@ -28,8 +30,17 @@
                 $password = $_POST['password'];
                 $role = $_POST['role'];
 
+                // IF EMAIL IS EMPTY
+                if(empty($email)){
+                    return "<script> alert('Email must not be empty') <script>";
+                }
+
+                // CHECKING IF EMAIL IS VALID OR NOT
+                $email->verify_email();
+
                 $new_user = new User($lastname, $firstname, $email, $password, $role);
                 $new_user->register();
+
             }
         }
 

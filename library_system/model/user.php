@@ -14,6 +14,9 @@
         }
 
         public function login() {
+
+            require_once "AP4/library_system/view/login.php";
+
             $sql = "SELECT user_id, email, password, role FROM users WHERE email=?";
             $stmt = $this->conn->prepare($sql);
             $stmt->bind_param("s", $this->email);
@@ -27,7 +30,6 @@
                     session_start();
                     $_SESSION['user_id'] = $row['user_id'];
                     $_SESSION['role'] = $row['role'];
-
                     
                     if ($row['role'] == 'student') {
                         header("Location: ../view/studentpage.php");
@@ -48,6 +50,8 @@
         }
 
         public function register(){
+            include "AP4/library_system/view/register.php";
+
             $hashpassword = password_hash($this->password, PASSWORD_DEFAULT);
 
             $sql = "INSERT INTO users(lastname, firstname, email, password, role) 
@@ -61,6 +65,16 @@
             }else{
                 echo "<script> alert('User unsuccessfully registered') </script>";
             }
+
+        }
+
+        public function verify_email(){
+            
+            if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+                return "<script> alert('Enter a valid email')";
+            }
+
+            return $this->email;
 
         }
        

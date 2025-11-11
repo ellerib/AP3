@@ -140,8 +140,9 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <h2>Welcome to Library System!<br>User</h2>
-    <button>Borrow</button>
-    <button>Reservation</button>
+    <button href="/view/borrowpage.php">Borrow</button>
+    <button href="reservepage.php">Reservation</button>
+    <button href="penaltypage.php"> Penalties </button>
   </div>
 
   <!-- Top bar with logout -->

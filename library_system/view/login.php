@@ -159,7 +159,7 @@
 
         <button type="submit" name="login">Log-In</button>
 
-        <a href="userregistration.php" class="create-btn">Create New User</a>
+        <a href="/AP4/library_system/view/register.php" class="create-btn">Create New User</a>
         </form>
     </div>
 
