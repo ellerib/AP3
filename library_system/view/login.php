@@ -151,7 +151,7 @@
     <header>Library System</header>
     <!-- Login Box -->
     <div class="loginform">
-        <form action="" method="post">  
+        <form action="../controller/userprocess.php" method="post">  
         <input type="text" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
 
@@ -159,7 +159,7 @@
 
         <button type="submit" name="login">Log-In</button>
 
-        <a href="/AP4/library_system/view/register.php" class="create-btn">Create New User</a>
+        <a href="../view/register.php" class="create-btn">Create New User</a>
         </form>
     </div>
 

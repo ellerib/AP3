@@ -88,7 +88,7 @@
 <body>
     <header> Library System-User Registration</header>
      <div class="formcontent">
-            <form action="" method="post">
+            <form action="../controller/userprocess.php" method="post">
 
                 <input type="text" name="lastname" placeholder="Last Name">
                 <input type="text" name="firstname" placeholder="First Name">

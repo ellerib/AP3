@@ -17,40 +17,44 @@
     }
 
     /* --- Sidebar --- */
+    
     .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100%;
-      background-color: #24412f;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #24412f;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto; 
+}
 
     .sidebar h2 {
       margin-bottom: 20px;
       line-height: 1.4;
     }
 
-    .sidebar button {
-      background-color: #335c42;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      padding: 10px;
-      margin: 8px 0;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+    .sidebar a {
+  display: block;
+  background-color: #335c42;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 16px;
+  text-align: center;
+  transition: 0.3s;
+}
 
-    .sidebar button:hover {
-      background-color: #3f7553;
-    }
+.sidebar a:hover {
+  background-color: #3f7553;
+}
+
 
     /* --- Top bar --- */
     .topbar {
@@ -140,9 +144,14 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <h2>Welcome to Library System!<br>User</h2>
-    <button href="/view/borrowpage.php">Borrow</button>
-    <button href="reservepage.php">Reservation</button>
-    <button href="penaltypage.php"> Penalties </button>
+      <a href="../view/borrowpage.php" class="sidebar-btn">Borrow</a>
+  <a href="reservepage.php" class="sidebar-btn">Reservation</a>
+  <a href="penaltypage.php" class="sidebar-btn">Penalties</a>
+
+  <a href="viewborrow.php" class="sidebar-btn">View All Borrow</a>
+  <a href="viewreservation.php" class="sidebar-btn">View All Reservation</a>
+  <a href="viewpenalties.php" class="sidebar-btn">View All Penalties</a>
+
   </div>
 
   <!-- Top bar with logout -->
